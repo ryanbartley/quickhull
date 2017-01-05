@@ -154,7 +154,7 @@ namespace quickhull {
 				else {
 					const Plane<T>& P = pvf.m_P;
 					pvf.m_visibilityCheckedOnIteration = iter;
-					const T d = P.m_N.dotProduct(activePoint)+P.m_D;
+					const T d = glm::dot( P.m_N, activePoint ) + P.m_D;
 					if (d>0) {
 						pvf.m_isVisibleFaceOnCurrentIteration = 1;
 						pvf.m_horizonEdgesOnCurrentIteration = 0;
@@ -395,7 +395,8 @@ namespace quickhull {
 		std::pair<IndexType,IndexType> selectedPoints;
 		for (size_t i=0;i<6;i++) {
 			for (size_t j=i+1;j<6;j++) {
-				const T d = m_vertexData[ m_extremeValues[i] ].getSquaredDistanceTo( m_vertexData[ m_extremeValues[j] ] );
+				const T d = glm::distance2( m_vertexData[ m_extremeValues[i] ],
+										    m_vertexData[ m_extremeValues[j] ] );
 				if (d > maxD) {
 					maxD=d;
 					selectedPoints={m_extremeValues[i],m_extremeValues[j]};
