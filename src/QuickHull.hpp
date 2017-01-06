@@ -210,5 +210,6 @@ bool QuickHull<T>::addPointToFace(typename MeshBuilder<T>::Face& f, IndexType po
 
 }
 
+namespace qh = quickhull;
 
 #endif /* QUICKHULL_HPP_ */
